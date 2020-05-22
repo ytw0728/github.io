@@ -10,12 +10,25 @@
     <script>
       Kakao.init('73032267919c26089508e1d09b8125b8');
       console.log(Kakao.isInitialized());
-      Kakao.Link.createCustomButton({
-        container: '#kakao-link-btn',
-        templateId: 27733,
-        templateArgs: {
-          'title': 'Hello',
-          'description': 'World'
+      Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: 'Test',
+          description: 'for ???',
+        },
+        buttons: [
+          {
+            title: 'Tab me',
+            link: {
+              mobileWebUrl: 'https://developers.kakao.com',
+            },
+          },
+        ],
+        success: function(response) {
+          console.log(response);
+        },
+        fail: function(error) {
+          console.log(error);
         }
       });
     </script>
